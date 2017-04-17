@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Collabor8</title>
+    <title>White Board</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,10 +10,13 @@
 
   <body>
 
-    <!-- Navigation Bar -->
+     <!-- Navigation Bar -->
+
+
+
     <nav class="navbar navbar-toggleable-sm navbar-inverse bg-inverse">
       <div class="container">
-        <%= link_to "Collabor8", root_path, class: "navbar-brand" %>
+       <%= link_to "White Board", root_path, class: "navbar-brand" %>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to "About", about_path, class: "nav-link" %></li>
@@ -26,7 +29,7 @@
           <li class="nav-item"><%= link_to "Sign in",  signin_path, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to "Sign up",  signup_path, class: "btn btn-primary" %></li>
           <% end %>
-        </ul>      
+        </ul>   
       </div>
     </nav>
 
@@ -43,7 +46,7 @@
       <div class="container">
         <hr>
         <center>
-          <p>©2017 Collabor8</p>
+          <p>©2017 White Board</p>
         </center>
       </div>
     </footer>
