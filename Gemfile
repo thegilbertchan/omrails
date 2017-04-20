@@ -17,6 +17,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'devise'
 gem 'font-awesome-sass'
+gem 'activeadmin', github: 'activeadmin'
+gem 'inherited_resources', '~> 1.7'
 
 group :development, :test do
   gem 'byebug', platform: :mri
