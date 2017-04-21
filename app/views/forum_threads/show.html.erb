@@ -1,0 +1,20 @@
+<div class = "container">
+<p>
+  <strong>User:</strong>
+  <%= @forum_thread.user.email %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @forum_thread.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @forum_thread.body %>
+</p>
+	<% if @forum_thread.user == current_user %>
+		<%= link_to 'Edit', edit_forum_thread_path(@forum_thread) %> |
+	<% end %>
+<%= link_to 'Back', forum_threads_path %>
+</div>
