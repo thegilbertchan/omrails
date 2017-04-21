@@ -1,4 +1,4 @@
-ActiveAdmin.register Tweet do
+ActiveAdmin.register ForumThread do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -12,11 +12,11 @@ ActiveAdmin.register Tweet do
 #   permitted
 # end
 
-permit_params :user, :content
+permit_params :user, :title, :body
 	index do
 	  id_column
 	  column :user
-	  column :content
+	  column :title
 	  actions
 	end
 
