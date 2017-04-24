@@ -1,0 +1,34 @@
+<div class="container" style="padding-top:40px;">
+<h1>Forum Posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Forum thread</th>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @forum_posts.each do |forum_post| %>
+      <tr>
+        <td><%= forum_post.user %></td>
+        <td><%= forum_post.forum_thread %></td>
+        <td><%= forum_post.content %></td>
+        <td><%= link_to 'Show', forum_post %></td>
+        <% if forum_post.user == current_user %>
+          <td><%= link_to 'Edit', edit_forum_post_path(forum_post) %></td>
+          <td><%= link_to 'Destroy', forum_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+    <% if user_signed_in? %>
+      <%= link_to 'New Forum Post', new_forum_post_path, class: "btn btn-primary"%>
+    <% end %>
+</div>

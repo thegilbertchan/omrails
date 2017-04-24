@@ -13,6 +13,8 @@
   <strong>Body:</strong>
   <%= @forum_thread.body %>
 </p>
+
+
 	<% if @forum_thread.user == current_user %>
 		<%= link_to 'Edit', edit_forum_thread_path(@forum_thread) %> |
 	<% end %>

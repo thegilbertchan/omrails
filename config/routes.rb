@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :forum_threads
+  resources :forum_threads do
+    resources :forum_posts
+  end
+  resources :forum_posts
   resources :tweets
   ActiveAdmin.routes(self)
   devise_for :users
