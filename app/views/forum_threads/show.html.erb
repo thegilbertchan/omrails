@@ -27,11 +27,13 @@
     </div>
   </div>
 <% end %>
+<br>
+<%= link_to 'Add New Post', new_forum_thread_forum_post_path(@forum_thread), class: "btn btn-primary"%>
 
 <div class="container" style="padding-top:40px;">
   <% if @forum_thread.user == current_user %>
   		<%= link_to 'Edit', edit_forum_thread_path(@forum_thread) %> |
-  		<%= link_to 'Posts', forum_thread_forum_posts_path(@forum_thread) %> |
+  		
   <% end %>
 
   <%= link_to 'Back', forum_threads_path %>
