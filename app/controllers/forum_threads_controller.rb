@@ -69,6 +69,6 @@ class ForumThreadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def forum_thread_params
-      params.require(:forum_thread).permit(:title, :body)
+      params.require(:forum_thread).permit(:title, :body,)
     end
 end

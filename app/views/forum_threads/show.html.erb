@@ -1,29 +1,38 @@
 <div class="container" style="padding-top:40px;">
-<p>
-  <strong>User:</strong>
-  <%= @forum_thread.user.email %>
-</p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @forum_thread.title %>
-</p>
+  <h1> Thread </h1>
 
-<p>
-  <strong>Body:</strong>
-  <%= @forum_thread.body %>
-</p>
+  <div class="card" >
+  <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+    <div class="card-block">
+      <h4 class="card-title"><%= @forum_thread.title %> </h4>
+      <p class="card-text"><%= @forum_thread.body %> </p>
+      <p class="card-text"><small>by <%= @forum_thread.user.email %>  at <%= @forum_thread.updated_at %> </small></p>
+    </div>
+  </div>
+</div>
 
+<div class="container" style="padding-top:10px;">
+<% @forum_thread.forum_posts.each do |forum_post| %>
+  <div class="card" >
+    <div class="card-block">
+     <!--  <h4 class="card-title"><%= forum_post.user.email %> </h4> -->
+      <p class="card-text"><%= forum_post.content %> </p>
+      <p class="card-text"><small>  by <%= forum_post.user.email %> at <%= forum_post.updated_at %> </small> </p>
+    <%= link_to 'Show', forum_post %>
+          <% if forum_post.user == current_user %>
+            <%= link_to 'Edit', edit_forum_post_path(forum_post) %>
+            <%= link_to 'Destroy', forum_post, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+    </div>
+  </div>
+<% end %>
 
-<%= @forum_thread.forum_posts %>
-<!-- /posts/:post_id/comments/ -->
-<%= link_to 'Posts', forum_thread_forum_posts_path(@forum_thread) %> |
+<div class="container" style="padding-top:40px;">
+  <% if @forum_thread.user == current_user %>
+  		<%= link_to 'Edit', edit_forum_thread_path(@forum_thread) %> |
+  		<%= link_to 'Posts', forum_thread_forum_posts_path(@forum_thread) %> |
+  <% end %>
 
-
-	<% if @forum_thread.user == current_user %>
-		<%= link_to 'Edit', edit_forum_thread_path(@forum_thread) %> |
-	<% end %>
-
-
-<%= link_to 'Back', forum_threads_path %>
+  <%= link_to 'Back', forum_threads_path %>
 </div>

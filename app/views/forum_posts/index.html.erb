@@ -14,8 +14,8 @@
   <tbody>
     <% @forum_posts.each do |forum_post| %>
       <tr>
-        <td><%= forum_post.user %></td>
-        <td><%= forum_post.forum_thread %></td>
+        <td><%= forum_post.user.email %></td>
+        <td><%= forum_post.forum_thread.title %></td>
         <td><%= forum_post.content %></td>
         <td><%= link_to 'Show', forum_post %></td>
         <% if forum_post.user == current_user %>
