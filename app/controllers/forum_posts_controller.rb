@@ -4,18 +4,25 @@ class ForumPostsController < ApplicationController
   # GET /forum_posts
   # GET /forum_posts.json
   def index
-    @forum_posts = ForumPost.all
+    forum_thread = ForumThread.find(params[:forum_thread_id])
+    @forum_posts = forum_thread.forum_posts
   end
-
+  
   # GET /forum_posts/1
   # GET /forum_posts/1.json
   def show
-    @forum_post = ForumPost.find(params[:id])
+    #1st you retrieve the thread thanks to params[:forum_thread_id]
+    @forum_post = ForumPost.find(params[:forum_thread_id])
+    #2nd you retrieve the forum_post thanks to params[:id]
+    @forum_posts = forum_thread.forum_post(params[:id])
   end
 
   # GET /forum_posts/new
   def new
-    @forum_post = current_user.forum_posts.new
+    #1st you retrieve the post thanks to params[:forum_thread_id]
+    forum_thread = ForumThread.find(params[:forum_thread_id])
+    #2nd you build a new one
+    @forum_post = forum_thread.forum_posts.build
   end
 
   # GET /forum_posts/1/edit

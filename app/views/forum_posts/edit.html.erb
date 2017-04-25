@@ -3,6 +3,6 @@
 
 	<%= render 'form', forum_post: @forum_post %>
 
-	<%= link_to 'Show', @forum_post %> |
-	<%= link_to 'Back', forum_posts_path %>
+	<%= link_to 'Show', [@forum_post.forum_thread, @forum_post] %> |
+	<%= link_to 'Back', forum_posts_path(@forum_post.forum_thread) %>
 </div>
