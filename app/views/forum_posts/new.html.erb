@@ -4,6 +4,10 @@
 
 <%= render 'form', forum_post: @forum_post %>
 
-<%= link_to 'Back', forum_posts_path %>
+
+<!-- TODO: bug here where we're not going back to the right page, only going to index 
+<!-- link_to 'Back', forum_thread_forum_posts_path(@forum_post.forum_thread) -->
+<%= link_to 'Back', forum_threads_path %>
+
 
 </div>

@@ -15,9 +15,11 @@ class ForumPostsController < ApplicationController
 
   # GET /forum_posts/new
   def new
-    @forum_post = current_user.forum_posts.new
+    #1st you retrieve the forum_thread thanks to params[:forum_thread_id]
+    forum_thread = ForumThread.find (params[:forum_thread_id])
+    #2nd you build a new one
+    @forum_post = forum_thread.forum_posts.build
   end
-
   # GET /forum_posts/1/edit
   def edit
     @forum_post = current_user.forum_posts.find(params[:id])
@@ -27,9 +29,12 @@ class ForumPostsController < ApplicationController
   # POST /forum_posts.json
   def create
     @forum_post = current_user.forum_posts.new(forum_post_params)
+
+
+
     respond_to do |format|
       if @forum_post.save
-        format.html { redirect_to @forum_post, notice: 'Forum post was successfully created.' }
+        format.html { redirect_to @forum_post.forum_thread, notice: 'Forum post was successfully created.' }
         format.json { render :show, status: :created, location: @forum_post }
       else
         format.html { render :new }
