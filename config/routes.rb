@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/:username', to: 'users#show', as: 'user'
+
   resources :forum_threads do
     resources :forum_posts
   end
@@ -7,14 +9,14 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
   as :user do
-  	get 'signin' => 'devise/sessions#new'
-  	delete 'signout' => 'devise/sessions#destroy'
-  	get 'signup' => 'devise/registrations#new'
+  	get 'signin', to: 'devise/sessions#new'
+  	delete 'signout', to: 'devise/sessions#destroy'
+  	get 'signup', to: 'devise/registrations#new'
   end
   root 'pages#home'
   # get '/' => 'pages#home'
-  get 'about' => 'pages#about'
-  get 'homealt' => 'pages#homealt'
-  get 'contact' => 'pages#contact'
+  get 'about', to: 'pages#about'
+  get 'homealt', to: 'pages#homealt'
+  get 'contact', to: 'pages#contact'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

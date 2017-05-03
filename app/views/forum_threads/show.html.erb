@@ -7,7 +7,7 @@
     <div class="card-block">
       <h3 class="card-title"><%= @forum_thread.title %> </h3>
       <p class="card-text"><%= @forum_thread.body %> </p>
-      <p class="card-text"><small>by <%= @forum_thread.user.username %>  at <%= @forum_thread.updated_at %> </small></p>
+      <p class="card-text"><small>by <%= link_to @forum_thread.user.username, user_path(@forum_thread.user.username) %>  at <%= @forum_thread.updated_at %> </small></p>
     </div>
   </div>
 </div>
