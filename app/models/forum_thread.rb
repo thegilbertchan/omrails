@@ -7,4 +7,6 @@ class ForumThread < ApplicationRecord
   
   belongs_to :user
   has_many :forum_posts
+  acts_as_followable
+
 end

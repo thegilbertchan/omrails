@@ -19,6 +19,7 @@ gem 'devise'
 gem 'font-awesome-sass'
 gem 'activeadmin', github: 'activeadmin'
 gem 'inherited_resources', '~> 1.7'
+gem "acts_as_follower", github: "tcocca/acts_as_follower"
 
 group :development, :test do
   gem 'byebug', platform: :mri
