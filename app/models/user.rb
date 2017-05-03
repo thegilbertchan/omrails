@@ -3,7 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :rememberable, :trackable, :validatable
+  
   has_many :tweets
   has_many :forum_threads
   has_many :forum_posts
+
+  validates :username, presence: true, uniqueness: true, length: { minimum: 6 }
+  validates :name, presence: true
 end

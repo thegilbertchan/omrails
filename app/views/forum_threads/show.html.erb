@@ -7,7 +7,7 @@
     <div class="card-block">
       <h3 class="card-title"><%= @forum_thread.title %> </h3>
       <p class="card-text"><%= @forum_thread.body %> </p>
-      <p class="card-text"><small>by <%= @forum_thread.user.email %>  at <%= @forum_thread.updated_at %> </small></p>
+      <p class="card-text"><small>by <%= @forum_thread.user.username %>  at <%= @forum_thread.updated_at %> </small></p>
     </div>
   </div>
 </div>
@@ -18,7 +18,7 @@
     <div class="card-block">
      <!--  <h4 class="card-title"><%= forum_post.user.email %> </h4> -->
       <p class="card-text"><%= forum_post.content %> </p>
-      <p class="card-text"><small>  by <%= forum_post.user.email %> at <%= forum_post.updated_at %> </small> </p>
+      <p class="card-text"><small>  by <%= forum_post.user.username %> at <%= forum_post.updated_at %> </small> </p>
     <%= link_to 'Show', forum_post %>
           <% if forum_post.user == current_user %>
             <%= link_to 'Edit', edit_forum_post_path(forum_post) %>

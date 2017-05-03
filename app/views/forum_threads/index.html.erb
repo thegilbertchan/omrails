@@ -7,7 +7,7 @@
           <div class="card-block">
             <h4 class="card-title"><%= forum_thread.title %></h4>
             <p class="card-text"><%= forum_thread.body %> </p>
-            <%= link_to 'Show', forum_thread, class: "btn btn-secondary"%>
+            <%= link_to 'Collaborate', forum_thread, class: "btn btn-secondary"%>
              <% if forum_thread.user == current_user %>
               <small class="text-muted">
                 <%= link_to 'Edit', edit_forum_thread_path(forum_thread) %>
