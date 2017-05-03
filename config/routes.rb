@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-get 'feed', to: 'feed#show'
+  ActiveAdmin.routes(self)
+  devise_for :users
+  as :user do
+    get 'signin', to: 'devise/sessions#new'
+    delete 'signout', to: 'devise/sessions#destroy'
+    get 'signup', to: 'devise/registrations#new'
+  end
+
+  get 'feed', to: 'feed#show'
 
   # get 'users/:username', to: 'users#show', as: 'user'
   resources :users, only: :show, param: :username do
@@ -12,15 +20,9 @@ get 'feed', to: 'feed#show'
   resources :forum_threads do
     resources :forum_posts
   end
+  
   resources :forum_posts
   resources :tweets
-  ActiveAdmin.routes(self)
-  devise_for :users
-  as :user do
-  	get 'signin', to: 'devise/sessions#new'
-  	delete 'signout', to: 'devise/sessions#destroy'
-  	get 'signup', to: 'devise/registrations#new'
-  end
   root 'pages#home'
   # get '/' => 'pages#home'
   get 'about', to: 'pages#about'
