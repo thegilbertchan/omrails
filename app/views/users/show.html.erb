@@ -6,10 +6,10 @@
             <p class = "card-text"> <%= @user.name %>  </p>
             <% if user_signed_in? %>
               <% if current_user.following?(@user) %>
-              <p class = "card-text"> <%= link_to "Follow", unfollow_user_path(@user.username), method: :delete %>  </p>
+              <p class = "card-text"> <%= link_to "Unfollow", unfollow_user_path(@user.username), method: :delete %>  </p>
               <% else %>
               <p class = "card-text"> <%= link_to "Follow", follow_user_path(@user.username), method: :post %>  </p>
-              <% end %>
+              <% end %> 
           <% end %>
         </div>
       </div>
