@@ -1,35 +1,28 @@
 class FollowsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!
 
   def create
     user = User.find_by(username: params[:username])
   	Follow.create(followable: user, follower: current_user)
-  	redirect_to user_path(user.username), notice: "Successfully folllowed user"
+  	redirect_to user_path(user.username), notice: "Successfully followed user"
   end
 
   
   def destroy
   	user = User.find_by(username: params[:username])
   	Follow.find_by(followable: user, follower: current_user).destroy
-  	redirect_to user_path(user.username), notice: "Successfully unfolllowed user"
+  	redirect_to user_path(user.username), notice: "Successfully unfollowed user"
+  end
+
+  def follow_forum_thread
+   forum_thread = ForumThread.find(params[:forum_thread])
+    Follow.create(followable: forum_thread, follower: current_user)
+    redirect_to forum_thread_path(forum_thread), notice: "Successfully watched a thread"
+  end
+
+  def unfollow_forum_thread
+  forum_thread = ForumThread.find(params[:forum_thread])
+    Follow.find_by(followable: forum_thread, follower: current_user).destroy
+    redirect_to forum_thread_path(forum_thread), notice: "Successfully watched a thread"
   end
 end
-
-
-
-# class FollowsController < ApplicationController
-#   before_action :authenticate_user!, except: [:index, :show]
-
-#   def create
-#     forum_thread = ForumThread.find_by(id: params[:id])
-#     Follow.create(followable: forum_thread, follower: current_user)
-#     redirect_to user_path(user.username), notice: "Successfully folllowed user"
-#   end
-
-
-#   def destroy
-#     forum_thread = ForumThread.find_by(id: params[:id])
-#     Follow.find_by(followable: forum_thread, follower: current_user)
-#     redirect_to user_path(user.username), notice: "Successfully unfolllowed user"
-#   end
-# end

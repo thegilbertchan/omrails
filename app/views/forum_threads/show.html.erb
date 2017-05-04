@@ -1,7 +1,13 @@
 <div class="container" style="padding-top:40px;">
 
   <h1> <%= @forum_thread.title %> </h1>
-
+  <% if user_signed_in? %>
+    <% if current_user.following?(@forum_thread) %>
+      <p class = "card-text"> <%= link_to "Unfollow", unfollow_forum_thread_path(@forum_thread), method: :delete %>  </p>
+      <% else %>
+      <p class = "card-text"> <%= link_to "Follow", follow_forum_thread_path(@forum_thread), method: :post %>  </p>
+    <% end %> 
+  <% end %>
   <div class="card" >
   <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
     <div class="card-block">
@@ -32,9 +38,7 @@
 
 <div class="container" style="padding-top:40px;">
   <% if @forum_thread.user == current_user %>
-  		<%= link_to 'Edit', edit_forum_thread_path(@forum_thread) %> |
-  		
+      <%= link_to 'Edit', edit_forum_thread_path(@forum_thread) %>
   <% end %>
-
   <%= link_to 'Back', forum_threads_path %>
 </div>

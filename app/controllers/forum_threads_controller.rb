@@ -11,6 +11,7 @@ class ForumThreadsController < ApplicationController
   # GET /forum_threads/1.json
   def show
     @forum_thread = ForumThread.find(params[:id])
+
   end
 
   # GET /forum_threads/new

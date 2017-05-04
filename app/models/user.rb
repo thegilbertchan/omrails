@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :forum_threads
   has_many :forum_posts
 
-  validates :username, presence: true, uniqueness: true, length: { minimum: 6 }
+  validates :username, presence: true, uniqueness: true, length: { minimum: 4 }
   validates :name, presence: true
   acts_as_followable
   acts_as_follower
